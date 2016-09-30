@@ -1,0 +1,6 @@
+{
+  "Host": "localhost",
+  "Port": "8000",
+  "RestHost": "draftaid-api.herokuapp.com",
+  "RestPort": "80"
+}

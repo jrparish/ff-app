@@ -1,4 +1,4 @@
-ffServices.factory('DraftAid', function(){
+export default function DraftAidService() {
   var grade, populateDrafted;
 
   grade = function(diff){
@@ -31,4 +31,4 @@ ffServices.factory('DraftAid', function(){
     populateDrafted: populateDrafted
   }
 
-});
+}

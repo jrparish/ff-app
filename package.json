@@ -1,34 +1,48 @@
 {
-  "name": "fantasy-football",
+  "name": "ff-app",
   "private": true,
   "version": "0.0.0",
   "description": "Fantasy Football Play Rankings",
   "repository": "",
   "license": "MIT",
   "devDependencies": {
-    "karma": "~0.10",
-    "protractor": "~0.20.1",
-    "http-server": "^0.6.1",
-    "bower": "^1.3.1",
-    "shelljs": "^0.2.6",
-    "karma-junit-reporter": "^0.2.2"
+    "babel-core": "^6.16.0",
+    "babel-loader": "^6.2.5",
+    "babel-plugin-angularjs-annotate": "^0.5.2",
+    "babel-plugin-transform-class-properties": "^6.16.0",
+    "babel-plugin-transform-object-assign": "^6.8.0",
+    "babel-plugin-transform-object-rest-spread": "^6.16.0",
+    "babel-preset-es2015": "^6.16.0",
+    "css-loader": "^0.25.0",
+    "html-loader": "^0.4.4",
+    "html-webpack-plugin": "^2.22.0",
+    "http-server": "^0.9.0",
+    "karma": "^1.3.0",
+    "karma-junit-reporter": "^1.1.0",
+    "less": "^2.7.1",
+    "less-loader": "^2.2.3",
+    "node-sass": "^3.10.1",
+    "sass-loader": "^4.0.2",
+    "style-loader": "^0.13.1",
+    "webpack": "2.1.0-beta.25",
+    "webpack-dev-server": "2.1.0-beta.5"
+  },
+  "dependencies": {
+    "angular": "^1.5.8",
+    "angular-local-storage": "^0.5.0",
+    "angular-mocks": "^1.5.8",
+    "angular-resource": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "bootstrap": "^3.3.7",
+    "jquery": "^3.1.0",
+    "lodash": "^4.16.1"
   },
   "scripts": {
-    "postinstall": "bower install",
-
-    "prestart": "npm install",
-    "start": "http-server -a localhost -p 8000",
-
-    "pretest": "npm install",
+    "prestart": "npm prune && npm install",
+    "start": "node ./webpack.server.js",
+    "debug": "node ./webpack.server.js",
+    "pretest": "npm prune && npm install",
     "test": "karma start test/karma.conf.js",
-    "test-single-run": "karma start test/karma.conf.js  --single-run",
-
-    "preupdate-webdriver": "npm install",
-    "update-webdriver": "webdriver-manager update",
-
-    "preprotractor": "npm run update-webdriver",
-    "protractor": "protractor test/protractor-conf.js",
-
-    "update-index-async": "node -e \"require('shelljs/global'); sed('-i', /\\/\\/@@NG_LOADER_START@@[\\s\\S]*\\/\\/@@NG_LOADER_END@@/, '//@@NG_LOADER_START@@\\n' + cat('app/bower_components/angular-loader/angular-loader.min.js') + '\\n//@@NG_LOADER_END@@', 'app/index-async.html');\""
+    "test-single-run": "karma start test/karma.conf.js  --single-run"
   }
 }
