@@ -4,10 +4,10 @@
 
 <div class="row form-group">
   <div class="col-md-12">
-    <button class="btn btn-sm btn-info btn-responsive" ng-disabled="drafted.length === 0" ng-click="undraft()">
+    <button class="btn btn-sm btn-info btn-responsive" ng-disabled="$ctrl.drafted.length === 0" ng-click="$ctrl.undraft()">
       <i class="fa fa-backward"></i> Undo
     </button>
-    <button class="pull-right btn btn-sm btn-warning btn-responsive" ng-click="restart()">
+    <button class="pull-right btn btn-sm btn-warning btn-responsive" ng-click="$ctrl.restart()">
       <i class="fa fa-eject"></i> Restart
     </button>
   </div>
@@ -16,7 +16,7 @@
 <div class="scrollable draft-history">
   <table class="table table-condensed table-hover table-striped">
     <tbody>
-      <tr ng-repeat="player in drafted | orderBy:'drafted':true">
+      <tr ng-repeat="player in $ctrl.drafted | orderBy:'drafted':true">
         <td>{{player.drafted}}</td>
         <td>{{player.name}}</td>
         <td>{{player.position}}</td>

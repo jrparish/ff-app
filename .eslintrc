@@ -1,0 +1,12 @@
+{
+  "parser": "babel-eslint",
+  "extends": "d3banking",
+
+  "globals": {
+    "angular": true
+  },
+
+  "env": {
+    "browser": true
+  }
+}

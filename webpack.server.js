@@ -22,7 +22,6 @@ const compiler = webpack(config);
 
 const server = new WebpackDevServer(compiler, {
   contentBase: '/dist',
-  quiet: true,
   stats: {
     colors: true,
     version: false,

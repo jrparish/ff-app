@@ -28,7 +28,6 @@ const baseConfig = {
       },
       { test: /\.html$/, loader: 'html' },
       { test: /\.less$/, loader: 'style!css!less' },
-      { test: /\.scss$/, loader: 'style!css!sass' },
       { test: /\.css$/, loader: 'style!css' },
       { test: /\.(png|gif)$/, loader: 'file' },
       { test: /\.woff(\?v=\d+\.\d+\.\d+)?$/, loader: 'url?limit=10000&mimetype=application/font-woff' },

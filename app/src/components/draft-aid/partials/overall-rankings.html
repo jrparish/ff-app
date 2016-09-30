@@ -4,22 +4,22 @@
 
 <div class="row form-group">
   <div class="form-group col-md-6">
-    <select ng-model="format"
-            ng-change="loadRankings(format)"
+    <select ng-model="$ctrl.format"
+            ng-change="$ctrl.loadRankings($ctrl.format)"
             name="format"
             class="form-control"
             required
-            ng-options="f.value as f.label for f in formats"></select>
+            ng-options="f.value as f.label for f in $ctrl.formats"></select>
   </div>
 
   <div class="col-md-6">
-    <input type="text" class="form-control" placeholder="Search" ng-model="search.name">
+    <input type="text" class="form-control" placeholder="Search" ng-model="$ctrl.search.name">
   </div>
 </div>
 
 <div class="scrollable overall-rankings">
-  <h4 ng-if="loading"><i class="fa fa-spinner fa-spin"></i> Loading Data...</h4>
-  <table ng-if="!loading" class="table table-condensed table-hover">
+  <h4 ng-if="$ctrl.loading"><i class="fa fa-spinner fa-spin"></i> Loading Data...</h4>
+  <table ng-if="!$ctrl.loading" class="table table-condensed table-hover">
     <tr ng-if='!player.drafted'
         data-toggle="tooltip"
         title="{{player.name}}, rank: {{player.rank}}, tier: {{player.tier}}, adp: {{player.average_draft_position}}, bye: {{player.bye_week}}"
@@ -29,8 +29,8 @@
                    warning: player.tier % 4 === 2,
                    info: player.tier % 4 === 3,
                    danger: player.tier % 1 !== 0 }"
-        ng-repeat="player in rankings | orderBy:['tier', 'rank'] | filter:search"
-        ng-click='draft(player)'>
+        ng-repeat="player in $ctrl.rankings | orderBy:['tier', 'rank'] | filter:$ctrl.search"
+        ng-click='$ctrl.draft(player)'>
       <td>{{player.rank}}</td>
       <td>Tier {{player.tier}}</td>
       <td>{{player.position}}</td>
