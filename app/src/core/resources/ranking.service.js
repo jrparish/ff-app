@@ -1,17 +1,14 @@
-export default function RankingService($resource, $http, USE_LOCAL_HOST, REMOTE_HOST_URL, LOCAL_HOST_URL) {
-  var resource, base_url;
+class RankingService {
 
-  resource = {};
-
-  if(USE_LOCAL_HOST) {
-    base_url = LOCAL_HOST_URL;
-  } else {
-    base_url = REMOTE_HOST_URL;
+  constructor($http, USE_LOCAL_HOST, REMOTE_HOST_URL, LOCAL_HOST_URL) {
+    this.$http = $http;
+    this.base_url = USE_LOCAL_HOST ? LOCAL_HOST_URL : REMOTE_HOST_URL;
   }
 
-  resource.index = function(format, week) {
-    return $http.get(base_url + 'rankings', {params: {format: format, week: week}, cache: true});
+  index(format, week) {
+    return this.$http.get(`${this.base_url}rankings`, { params: { format, week }, cache: true });
   }
 
-  return resource;
 }
+
+export default RankingService;
