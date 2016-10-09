@@ -1,5 +1,8 @@
 class NavBarController {
 
+  $location: any;
+  updatedAt: string;
+
   /* @ngInject */
   constructor($location, $scope, Ranking) {
     this.$location = $location;

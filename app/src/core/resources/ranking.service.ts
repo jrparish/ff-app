@@ -1,5 +1,9 @@
 class RankingService {
 
+  $http: any;
+  updatedAt: string;
+  base_url: string;
+
   constructor($http, USE_LOCAL_HOST, REMOTE_HOST_URL, LOCAL_HOST_URL) {
     this.$http = $http;
     this.base_url = USE_LOCAL_HOST ? LOCAL_HOST_URL : REMOTE_HOST_URL;

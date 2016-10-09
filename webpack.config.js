@@ -32,7 +32,7 @@ const baseConfig = {
         include: [
           path.resolve(__dirname, 'app/src')
         ],
-        loaders: ['babel', 'awesome-typescript']
+        loaders: ['babel', 'awesome-typescript', 'angular2-template']
       },
       { test: /\.html$/, loader: 'html' },
       { test: /\.less$/, loader: 'style!css!less' },
