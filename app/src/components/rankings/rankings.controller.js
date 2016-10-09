@@ -16,11 +16,10 @@ class RankingsController {
     this.loading = true;
     this.format = format;
     this.Ranking.index(format, week || 0)
-      .success(data => {
+      .then(data => {
         this.rankings = data.rankings;
         this.loading = false;
-      })
-      .error(() => {
+      }, () => {
         this.loading = false;
       });
   }

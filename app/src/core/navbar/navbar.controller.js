@@ -1,8 +1,10 @@
 class NavBarController {
 
   /* @ngInject */
-  constructor($location) {
+  constructor($location, $scope, Ranking) {
     this.$location = $location;
+
+    $scope.$watch(() => Ranking.updatedAt, updatedAt => (this.updatedAt = updatedAt));
   }
 
   getClass(path) {

@@ -6,7 +6,11 @@ class RankingService {
   }
 
   index(format, week) {
-    return this.$http.get(`${this.base_url}rankings`, { params: { format, week }, cache: true });
+    return this.$http.get(`${this.base_url}rankings`, { params: { format, week }, cache: true })
+      .then(response => {
+        this.updatedAt = response.data.updated_at;
+        return response.data;
+      });
   }
 
 }

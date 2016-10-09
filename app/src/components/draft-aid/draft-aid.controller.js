@@ -11,8 +11,8 @@ class DraftAidController {
   };
 
   /* @ngInject */
-  constructor($rootScope, $routeParams, Ranking, Rankings, DraftAid, localStorageService) {
-    Object.assign(this, { $rootScope, Ranking, DraftAid, localStorageService });
+  constructor(Ranking, Rankings, DraftAid, localStorageService) {
+    Object.assign(this, { Ranking, DraftAid, localStorageService });
 
     this.formats = Rankings.formats;
     this.positions = Rankings.positions;
@@ -50,16 +50,14 @@ class DraftAidController {
     this.format = format;
 
     this.Ranking.index(format, week || 0)
-      .success(data => {
+      .then(data => {
         this.rankings = data.rankings;
-        this.$rootScope.updatedAt = data.updated_at;
 
         this.drafted = this.localStorageService.get(`drafted_${this.format}`) || [];
         this.DraftAid.populateDrafted(this.rankings, this.drafted);
 
         this.loading = false;
-      })
-      .error(() => {
+      }, () => {
         this.loading = false;
       });
   }
