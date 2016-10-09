@@ -1,6 +1,6 @@
 // Framework
 import angular from 'angular';
-import 'angular-route';
+import uiRouter from 'angular-ui-router';
 import 'angular-resource';
 import 'angular-local-storage';
 
@@ -14,7 +14,7 @@ import './app.less';
 
 angular
   .module('ffApp', [
-    'ngRoute',
+    uiRouter,
     'ngResource',
     'LocalStorageModule',
     Core,
@@ -28,24 +28,8 @@ angular
   .constant('LOCAL_HOST_URL', 'http://localhost:9292/')
   .constant('USE_LOCAL_HOST', false)
 
-  // Routes
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/rankings', {
-        template: '<ff-rankings></ff-rankings>'
-      })
-      .when('/draft-aid', {
-        template: '<ff-draft-aid></ff-draft-aid>'
-      })
-      .when('/about', {
-        template: '<ff-about></ff-about>'
-      })
-      .otherwise({
-        redirectTo: '/draft-aid'
-      });
-  })
-
   // Local Storage Prefix
-  .config(function (localStorageServiceProvider) {
-    localStorageServiceProvider.setPrefix('jayzhengff_');
+  .config((localStorageServiceProvider, $stateProvider, $urlRouterProvider) => {
+    localStorageServiceProvider.setPrefix('ffApp_');
+    $urlRouterProvider.otherwise('/draft-aid');
   });

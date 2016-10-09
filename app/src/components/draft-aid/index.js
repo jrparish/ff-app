@@ -8,27 +8,25 @@ const DraftAid = angular
   .module('DraftAid', [])
   .component('ffDraftAid', DraftAidComponent)
   .factory('DraftAid', DraftAidService)
-  .run($templateCache => {
-
-    // TODO - Refactor this using ui-router or something.
-    // Loads partials into cache to be used with ngInclude
-    const urls = [
-      {
-        tpl: DraftHistoryTpl,
-        url: 'draft-history.html'
-      },
-      {
-        tpl: OverallRankingsTpl,
-        url: 'overall-rankings.html'
-      },
-      {
-        tpl: PositionRankingsTpl,
-        url: 'position-rankings.html'
+  .config($stateProvider => {
+    $stateProvider.state({
+      name: 'draft-aid',
+      component: 'ffDraftAid'
+    })
+    .state({
+      name: 'draft-aid.views',
+      url: '/draft-aid',
+      views: {
+        'overall-rankings': {
+          template: OverallRankingsTpl
+        },
+        'draft-history': {
+          template: DraftHistoryTpl
+        },
+        'position-rankings': {
+          template: PositionRankingsTpl
+        }
       }
-    ];
-
-    urls.forEach(obj => {
-      $templateCache.put(obj.url, obj.tpl);
     });
   })
   .name;

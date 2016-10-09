@@ -1,15 +1,15 @@
 <div id="main" class="container-fluid clear-top">
   <div class="row">
     <div class="col-md-3 col-sm-12 col-xs-12">
-      <ng-include src="'overall-rankings.html'" />
+      <div ui-view="overall-rankings"></div>
     </div>
 
     <div class="col-md-6 col-sm-12 hidden-xs">
-      <ng-include src="'position-rankings.html'" />
+      <div ui-view="position-rankings"></div>
     </div>
 
     <div class="col-md-3 col-sm-12 col-xs-12">
-      <ng-include src="'draft-history.html'" />
+      <div ui-view="draft-history"></div>
     </div>
   </div>
 
