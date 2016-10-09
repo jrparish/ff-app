@@ -27,6 +27,7 @@
     "less-loader": "^2.2.3",
     "style-loader": "^0.13.1",
     "typescript": "^2.0.3",
+    "typings": "^1.4.0",
     "webpack": "2.1.0-beta.25",
     "webpack-dev-server": "2.1.0-beta.5"
   },
@@ -41,9 +42,11 @@
     "lodash": "^4.16.1"
   },
   "scripts": {
+    "postinstall": "typings install",
     "prestart": "npm prune && npm install",
     "start": "node ./webpack.server.js",
     "debug": "node ./webpack.server.js",
+    "typings": "typings",
     "pretest": "npm prune && npm install",
     "test": "karma start test/karma.conf.js",
     "test-single-run": "karma start test/karma.conf.js  --single-run"

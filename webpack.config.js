@@ -22,9 +22,16 @@ const baseConfig = {
       {
         test: /\.js$/,
         include: [
-          path.resolve(__dirname, 'app/src'),
+          path.resolve(__dirname, 'app/src')
         ],
         loader: 'babel'
+      },
+      {
+        test: /\.ts$/,
+        include: [
+          path.resolve(__dirname, 'app/src')
+        ],
+        loaders: ['awesome-typescript', 'babel']
       },
       { test: /\.html$/, loader: 'html' },
       { test: /\.less$/, loader: 'style!css!less' },
