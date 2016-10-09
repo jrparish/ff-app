@@ -15,7 +15,8 @@ const baseConfig = {
     modules: [
       path.resolve('./app/src'),
       path.resolve('node_modules')
-    ]
+    ],
+    extensions: ['.js', '.ts']
   },
   module: {
     loaders: [
@@ -31,7 +32,7 @@ const baseConfig = {
         include: [
           path.resolve(__dirname, 'app/src')
         ],
-        loaders: ['awesome-typescript', 'babel']
+        loaders: ['babel', 'awesome-typescript']
       },
       { test: /\.html$/, loader: 'html' },
       { test: /\.less$/, loader: 'style!css!less' },

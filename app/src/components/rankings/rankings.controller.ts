@@ -1,9 +1,13 @@
 class RankingsController {
 
   // Initializations
-  format = 'standard';
-  predicate = 'rank';
-  reverse = false;
+  Ranking;
+  formats: Array<string> = [];
+  format: string  = 'standard';
+  predicate: string = 'rank';
+  reverse: boolean = false;
+  loading: boolean = false;
+  rankings: Array<any> = [];
 
   /* @ngInject */
   constructor(Ranking, Rankings) {
@@ -12,10 +16,10 @@ class RankingsController {
     this.loadRankings(this.format);
   }
 
-  loadRankings(format, week) {
+  loadRankings(format, week = 0) {
     this.loading = true;
     this.format = format;
-    this.Ranking.index(format, week || 0)
+    this.Ranking.index(format, week)
       .then(data => {
         this.rankings = data.rankings;
         this.loading = false;
