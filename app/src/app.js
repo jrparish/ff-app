@@ -1,5 +1,4 @@
 // Framework
-import angular from 'angular';
 import uiRouter from 'angular-ui-router';
 import 'angular-resource';
 import 'angular-local-storage';
@@ -12,7 +11,7 @@ import { DraftAid, Rankings, About } from './components';
 import './bootstrap.less';
 import './app.less';
 
-angular
+const ffApp = angular
   .module('ffApp', [
     uiRouter,
     'ngResource',
@@ -32,4 +31,7 @@ angular
   .config((localStorageServiceProvider, $stateProvider, $urlRouterProvider) => {
     localStorageServiceProvider.setPrefix('ffApp_');
     $urlRouterProvider.otherwise('/draft-aid');
-  });
+  })
+  .name;
+
+export default ffApp;
