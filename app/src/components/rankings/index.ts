@@ -1,8 +1,9 @@
-import RankingsComponent from './rankings.component';
+import { RankingsComponent } from './rankings.component';
+import adapter from '../../adapter';
 
 const rankings = angular
   .module('rankings', [])
-  .component('ffRankings', RankingsComponent)
+  .directive('ffRankings', <angular.IDirectiveFactory> adapter.downgradeNg2Component(RankingsComponent))
   .config($stateProvider => {
     $stateProvider.state({
       name: 'rankings',

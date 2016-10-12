@@ -16,7 +16,7 @@ const baseConfig = {
       path.resolve('./app/src'),
       path.resolve('node_modules')
     ],
-    extensions: ['.js', '.ts']
+    extensions: ['.ts', '.js']
   },
   module: {
     loaders: [
@@ -55,7 +55,12 @@ const baseConfig = {
     new HtmlWebpackPlugin({
       title: 'FF App',
       template: './app/index.html'
-    })
+    }),
+
+    new webpack.ContextReplacementPlugin(
+      /angular(\\|\/)core(\\|\/)(esm(\\|\/)src|src)(\\|\/)linker/,
+      path.join(__dirname, './src')
+    )
   ]
 };
 
